@@ -546,6 +546,24 @@ int axidma_video_transfer(axidma_dev_t dev, int display_channel, size_t width,
     return rc;
 }
 
+/* This function gets the residue of the last transaction. */
+int axidma_get_residue(axidma_dev_t dev, int channel, unsigned int *residue) {
+    int rc;
+    struct axidma_residue res;
+
+    res.channel_id = channel;
+    rc = ioctl(dev->fd, AXIDMA_DMA_RESIDUE, &res);
+
+    if (rc < 0) {
+        perror("Failed to get the DMA residue");
+    }
+    else {
+        *residue = res.residue;
+    }
+
+    return rc;
+}
+
 /* This function stops all transfers on the given channel with the given
  * direction. This function is required to stop any video transfers, or any
  * non-blocking transfers. */

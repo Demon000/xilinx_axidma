@@ -278,6 +278,16 @@ int axidma_video_transfer(axidma_dev_t dev, int display_channel, size_t width,
         size_t height, size_t depth, void **frame_buffers, int num_buffers);
 
 /**
+ * Get the residue of the last transaction
+ *
+ * @param[in] dev An #axidma_dev_t returned by #axidma_init.
+ * @param[in] channel DMA channel.
+ * @param[in] residue A pointer to store the returned residue.
+ * @return 0 upon success, a negative number on failure.
+ **/
+int axidma_get_residue(axidma_dev_t dev, int channel, unsigned int *residue);
+
+/**
  * Stops the DMA transfer on specified DMA channel.
  *
  * This function stops transfers on either DMA or VDMA channels.
