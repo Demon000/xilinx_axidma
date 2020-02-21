@@ -17,8 +17,7 @@ output/
 
 # Allow for Makefiles, Makefile fragments, and Kbuild files
 !Makefile
-!*.mk
-!Kbuild
+!Kconfig
 
 # Ignore the config Makefile, as this is specific to each user
 /config.mk
